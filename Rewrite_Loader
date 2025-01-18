@@ -77,7 +77,7 @@ if BedwarsIDCheck == true then
         lib:createnotification("Solara version !",10)
     else
         if identity > 3 then
-            loadstring(game:HttpGet("https://gist.githubusercontent.com/cocotv666/b9690313e157084d15c33e02b91e12d0/raw/8aa3d73191ae1a492236345b6d677b53cfde8460/RavenB4Rewrite_BedWars"))()
+            loadstring(game:HttpGet("https://gist.githubusercontent.com/cocotv666/b9690313e157084d15c33e02b91e12d0/raw/2d9a78b9a35f7a7bc4b2adc5c98aca09e009078d/RavenB4Rewrite_BedWars"))()
         else
             loadstring(game:HttpGet("https://raw.githubusercontent.com/NearRavenb4/RavenB4Rewrite/refs/heads/main/Solara"))()
             lib:createnotification("Solara version !",10)
