@@ -1,0 +1,103 @@
+repeat task.wait() until game:IsLoaded()
+task.wait(2)
+assert(not shared.RavenB4Injected, "RavenB4 is already Injected!")
+shared.RavenB4Injected = true
+local UIS = game:GetService("UserInputService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local lib = {}
+
+if shared.RavenWhitelist ~= nil then
+    for i,v in pairs(shared.RavenWhitelist) do
+        if v == game:GetService("RbxAnalyticsService"):GetClientId() then
+            print("Whitelisted!")
+        else
+            LocalPlayer:Kick("You're not Whitelisted from this Config!")
+        end
+    end
+end
+if shared.RavenBlacklist ~= nil then
+    for i,v in pairs(shared.RavenBlacklist) do
+        if v == game:GetService("RbxAnalyticsService"):GetClientId() then
+            LocalPlayer:Kick("You're Blacklisted from this Config!")
+        end
+    end
+end
+--SETTING EVERYTHING UP
+if not ((writefile) or (readfile) or (makefolder)) then
+    LocalPlayer:Kick("Executor is not supported, please use another executor for Raven B4!")
+end
+
+if isfolder("RavenB4") == false then
+    makefolder("RavenB4")
+end
+if isfolder("RavenB4\\Configs") == false then
+    makefolder("RavenB4\\Configs")
+end
+local PetSim99IDCheck = false
+local BedwarsIDCheck = false
+local SkywarsIDCheck = false
+local BridgeDuelsIDCheck = false
+local bedwarsids = {6872265039,6872274481,8444591321,8560631822}
+local skywarsids = {8542259458,8542275097,8592115909,8768229691,8951451142,13246639586}
+local bladeballids = {13772394625,14915220621,15144787112,15234596844,15264892126,15185247558}
+local petsim99ids = {8737899170}
+
+if table.find(bedwarsids,game.PlaceId) then
+    shared.RavenConfigName = 'Raven B4 Bedwars'
+    BedwarsIDCheck = true
+elseif table.find(skywarsids,game.PlaceId) then
+    shared.RavenConfigName = 'NewSkywarsUpdated'
+    SkywarsIDCheck = true
+elseif table.find(bladeballids,game.PlaceId) then
+    shared.RavenConfigName = 'Raven B4 BladeBall69'
+    BridgeDuelsIDCheck = true
+elseif table.find(petsim99ids,game.PlaceId) then
+    shared.RavenConfigName = 'NewPetSim99Updated'
+    PetSim99IDCheck = true
+else
+    print("Game Is Not Supported!")
+end
+
+if shared.RavenConfigName == nil then
+    shared.RavenConfigName = 'Default Config'
+end
+
+if UIS.KeyboardEnabled and UIS.MouseEnabled and not UIS.TouchEnabled then
+    lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/NearRavenb4/RavenB4Rewrite/refs/heads/main/Gui"))()
+else
+    lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/NearRavenb4/RavenB4Rewrite/refs/heads/main/Gui"))()
+end
+
+if BedwarsIDCheck == true then
+    local success, identity = pcall(getidentity)
+
+    if not success then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/NearRavenb4/RavenB4Rewrite/refs/heads/main/Solara"))()
+        lib:createnotification("Solara version !",10)
+    else
+        if identity > 3 then
+            loadstring(game:HttpGet("https://gist.githubusercontent.com/cocotv666/b9690313e157084d15c33e02b91e12d0/raw/8aa3d73191ae1a492236345b6d677b53cfde8460/RavenB4Rewrite_BedWars"))()
+        else
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/NearRavenb4/RavenB4Rewrite/refs/heads/main/Solara"))()
+            lib:createnotification("Solara version !",10)
+        end
+    end
+elseif SkywarsIDCheck == true then
+    --[[loadstring(game:HttpGet("https://gist.githubusercontent.com/cocotv666/317cf83ad7e44f8bd0c13c405ddc9dcd/raw/92237b348b1678ccc8e6648de23d0a07a197a01c/RavenB4Rewrite_SkyWars"))()
+    lib:createnotification("BEST Skywars Script out there!",6)]]
+elseif BridgeDuelsIDCheck == true then
+    --[[loadstring(game:HttpGet("https://raw.githubusercontent.com/goinglikeatrainlol/RavenB4Roblox/main/Games/BladeBall"))()
+    lib:createnotification("BEST BladeBall Script out there!",6)]]
+elseif PetSim99IDCheck == true then
+    --[[loadstring(game:HttpGet("https://raw.githubusercontent.com/goinglikeatrainlol/RavenB4Roblox/main/Games/PetSim99"))()
+    lib:createnotification("BEST Pet Sim 99 Script out there!",6)]]
+else
+    lib:createnotification("Game is not supported!",6)
+    if shared.RavenB4Started == nil then
+        shared.RavenB4Completed = true
+    end
+end
+
+
+return lib
