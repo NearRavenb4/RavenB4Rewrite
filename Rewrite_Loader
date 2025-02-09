@@ -70,7 +70,7 @@ else
 end
 
 if BedwarsIDCheck == true then
-    loadstring(game:HttpGet("https://gist.githubusercontent.com/NearRavenb4/363a2dba2437a39fe322f0b8ccee4764/raw/6ecf41da63981106bfd79bc9ec7e733d7e3964bf/RavenRewrite_bedwars"))()
+    loadstring(game:HttpGet("https://gist.githubusercontent.com/NearRavenb4/363a2dba2437a39fe322f0b8ccee4764/raw/6b366b58426fb4df81f14b6741cc52bd380c93dd/RavenRewrite_bedwars"))()
 elseif SkywarsIDCheck == true then
     --[[loadstring(game:HttpGet("https://gist.githubusercontent.com/cocotv666/317cf83ad7e44f8bd0c13c405ddc9dcd/raw/92237b348b1678ccc8e6648de23d0a07a197a01c/RavenB4Rewrite_SkyWars"))()
     lib:createnotification("BEST Skywars Script out there!",6)]]
